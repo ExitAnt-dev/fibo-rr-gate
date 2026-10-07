@@ -1,0 +1,22 @@
+services:
+  - type: worker
+    name: exitant-fibo-rr-gate
+    runtime: image
+    plan: starter
+    region: oregon
+    numInstances: 1
+    image:
+      url: docker.io/exitant/exitant-fibo-rr-gate:latest
+    disk:
+      name: fibo-rr-gate-state
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: API_KEY
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
